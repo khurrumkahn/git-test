@@ -1,0 +1,23 @@
+export const validateCommentForm = (values) => {
+    const errors = {};
+
+    if (!values.rating) {
+        errors.rating = 'Required';
+    }
+
+    if (!values.author) {
+        errors.author = 'Required';
+    } else if (values.author.length < 2) {
+        errors.author = 'Must be at least 2 characters.';
+    } else if (values.author.length > 15) {
+        errors.author = 'Must be 15 characters or less.';
+    }
+
+    if (!values.commentText) {
+        errors.commentText = 'Required';
+    } else if (values.commentText.length < 10) {
+        errors.commentText = 'Must be at least 10 characters';
+    }
+
+    return errors;
+};
